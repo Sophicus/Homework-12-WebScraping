@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Facts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <style>
+  .box {
+    min-height: 50px;
+    padding: 20px;
+    margin: 20px;
+    font-weight: 300;
+    color: rgb(53, 53, 53);
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	border-radius: 4px;
+  }
+
+  .grey {
+      background: #E4E4E4;
+  }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <h2>Latest Mars News</h2>
+    <h3>{{ mars.news_title }}</h3>
+    <p>{{ mars.news_p }}</p>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="box grey">
+        <h2>Featured Mars Image</h2>
+        <img class="img-responsive" src="{{ mars.featured_img }}" alt="Mars Featured Image">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box grey">
+        <h3>Current Weather on Mars</h3>
+        <p>{{ mars.mars_weather }}</p>
+        <h3>Mars Facts</h3>
+        {{ mars.mars_html_table | safe}}
+        </div>
+      </div>
+    </div>
+    <h3>Mars Hemispheres</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box grey">
+          <img class="img-responsive" src="{{ mars.hemi_list[0].img_url }}" alt="Cerberus Hemisphere Enhanced">
+          <h4>{{ mars.hemi_list[0].title }}</h4>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <div class="box grey">
+            <img class="img-responsive" src="{{ mars.hemi_list[1].img_url }}" alt="Schiaparelli Hemisphere Enhanced">
+            <h4>{{ mars.hemi_list[1].title }}</h4>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+          <div class="box grey">
+            <img class="img-responsive" src="{{ mars.hemi_list[2].img_url }}" alt="Syrtis Major Hemisphere Enhanced">
+            <h4>{{ mars.hemi_list[2].title }}</h4>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box grey">
+              <img class="img-responsive" src="{{ mars.hemi_list[3].img_url }}" alt="Valles Marineris Hemisphere Enhanced">
+              <h4>{{ mars.hemi_list[3].title }}</h4>
+            </div>
+          </div>
+      </div>
+  </div>
+</body>
+
+</html>
